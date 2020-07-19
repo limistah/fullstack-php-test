@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCouponToProducts extends Migration
+class AddTaxFeeToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddCouponToProducts extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->bigInteger('coupon_id');
+        Schema::table('users', function (Blueprint $table) {
+            $table->integer('tax_fee');
         });
     }
 
@@ -25,6 +25,5 @@ class AddCouponToProducts extends Migration
      */
     public function down()
     {
-        
     }
 }
