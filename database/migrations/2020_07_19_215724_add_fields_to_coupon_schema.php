@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddProductsTableFields extends Migration
+class AddFieldsToCouponSchema extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class AddProductsTableFields extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->string('title');
+        Schema::table('coupons', function (Blueprint $table) {
+            $table->string('code');
             $table->float('price');
-            $table->string('image');
-            $table->text('description');
-            $table->boolean('published');
-        });    
+        });
     }
 
     /**
@@ -29,5 +26,6 @@ class AddProductsTableFields extends Migration
      */
     public function down()
     {
+        
     }
 }
