@@ -14,7 +14,7 @@ class AddFieldsToCouponSchema extends Migration
     public function up()
     {
         Schema::table('coupons', function (Blueprint $table) {
-            $table->string('code');
+            $table->string('code')->unique();;
             $table->float('price');
         });
     }
