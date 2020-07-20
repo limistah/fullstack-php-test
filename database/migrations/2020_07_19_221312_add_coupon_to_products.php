@@ -14,7 +14,8 @@ class AddCouponToProducts extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->bigInteger('coupon_id');
+            $table->bigInteger('coupon_id')->unsigned();
+            $table->foreign('coupon_id')->references('id')->on('coupons')->onDelete('cascade');;
         });
     }
 
@@ -25,6 +26,9 @@ class AddCouponToProducts extends Migration
      */
     public function down()
     {
-        
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropForeign('products_coupon_id_foreign');
+            $table->dropColumn('coupon_id');
+        });
     }
 }

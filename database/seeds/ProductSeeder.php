@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Product;
+use App\Models\Coupon;
 
 class ProductSeeder extends Seeder
 {
@@ -12,6 +13,11 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        factory(Product::class, 50)->create();
+        factory(Product::class, 50)->make()->each(function ($product) {
+            // Seed the relation with one coupon
+            $coupon = Coupon::all()->random();
+            $product->coupon_id = $coupon->id;
+            $product->save();
+        });
     }
 }

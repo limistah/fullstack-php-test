@@ -15,7 +15,7 @@ class AddProductsTableFields extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             $table->string('title');
-            $table->float('price');
+            $table->string('price');
             $table->string('image');
             $table->text('description');
             $table->boolean('published');
