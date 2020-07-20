@@ -20,3 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'api'], function () {
+    Route::resource('/products', 'ProductController')->only(['index', 'show']);
+    Route::resource('/cart', 'CartController')->only(['index', 'store', 'update', 'destroy']);
+    Route::resource('/coupons', 'CouponController')->only(['index', 'store', 'update', 'destroy']);
+    Route::resource('/orders', 'OrderController')->only(['index', 'store', 'update']);
+});
